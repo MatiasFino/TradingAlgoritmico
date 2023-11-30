@@ -23,6 +23,10 @@ class MyStrategy(bt.Strategy):
         self.fast_ma = bt.indicators.SMA(self.data.close, period=self.p.fast_length)
         self.slow_ma = bt.indicators.SMA(self.data.close, period=self.p.slow_length)
         self.rsi = bt.indicators.RelativeStrengthIndex(period=self.p.rsi_length)
+        self.golden_cross = GoldenCross()
+        self.bollinger = bt.indicators.BollingerBands(midband=self.fast_ma)
+        self.parabolic_sar = bt.indicators.ParabolicSAR()
+
         self.in_position = False
 
     def next(self):
