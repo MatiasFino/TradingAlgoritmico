@@ -3,8 +3,6 @@ import math
 
 import backtrader as bt
 
-from GoldenCross import GoldenCross
-
 
 class MyStrategy(bt.Strategy):
     params = (
@@ -40,7 +38,7 @@ class MyStrategy(bt.Strategy):
         self.macd = bt.indicators.MACD()
         self.in_position = False
         self.stop_loss = 0.95
-        self.order_size = 500
+        self.order_size = 10000
 
     def next(self):
         score = 0
@@ -102,7 +100,7 @@ class MyStrategy(bt.Strategy):
                 score += 10
             print("score: {}".format(score))
             print(indicators)
-            if score >= 50:
+            if score >= 20:
 
                 if not self.in_position:  # and self.data0.datetime.datetime(0) < self.p.end_date - 2:
                     print("nuevo hsf")
