@@ -15,7 +15,7 @@ if __name__ == '__main__':
     cerebro = bt.Cerebro()
     # Create a Data Feed
     data = bt.feeds.YahooFinanceCSVData(
-        dataname= 'datas/orcl-1995-2014.txt',
+        dataname='datas/orcl-1995-2014.txt',
         # Do not pass values before this date
         fromdate=datetime.datetime(2000, 1, 1),
         # Do not pass values after this date
@@ -36,6 +36,6 @@ if __name__ == '__main__':
 
     # Run over everything
     cerebro.run()
-
+    #cerebro.plot()
     # Print out the final result
     print('Final Portfolio Value: %.2f' % cerebro.broker.getvalue())
