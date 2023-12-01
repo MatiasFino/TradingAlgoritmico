@@ -14,12 +14,14 @@ if __name__ == '__main__':
     # Create a cerebro entity
     cerebro = bt.Cerebro()
     # Create a Data Feed
+    start_date = datetime.datetime(2000, 1, 1)
+    end_date = datetime.datetime(2010, 12, 31)
     data = bt.feeds.YahooFinanceCSVData(
         dataname='datas/orcl-1995-2014.txt',
         # Do not pass values before this date
-        fromdate=datetime.datetime(2000, 1, 1),
+        fromdate=start_date,
         # Do not pass values after this date
-        todate=datetime.datetime(2000, 12, 31),
+        todate=end_date,
         reverse=False,
     )
 
@@ -36,6 +38,7 @@ if __name__ == '__main__':
 
     # Run over everything
     cerebro.run()
-    #cerebro.plot()
-    # Print out the final result
     print('Final Portfolio Value: %.2f' % cerebro.broker.getvalue())
+
+    cerebro.plot()
+    # Print out the final result
